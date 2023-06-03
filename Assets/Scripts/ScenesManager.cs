@@ -1,25 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
-    private AssetBundle myLoadedAssetBundle;
-    private string[] scenePaths;
-    // Start is called before the first frame update
+    private Scene _currentScene;
     void Start()
     {
-        myLoadedAssetBundle = AssetBundle.LoadFromFile("/Scenes");
-        scenePaths = myLoadedAssetBundle.GetAllScenePaths();
-        //SceneManager.LoadScene("AufgabenteilB", LoadSceneMode.Additive);
+        SceneManager.LoadScene(0, LoadSceneMode.Additive);
     }
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(10, 10, 100, 30), "Change Scene"))
+        int index = SceneManager.GetSceneAt(1).buildIndex;
+        if (GUI.Button(new Rect(10, 10, 400, 30), String.Format("Next Scene ({0})",System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex((index + 1) % (SceneManager.sceneCountInBuildSettings-1))))))
         {
-            Debug.Log("Scene2 loading: " + scenePaths[0]);
-            SceneManager.LoadScene(scenePaths[0], LoadSceneMode.Single);
+            if (SceneManager.sceneCount > 2) return;
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
+            SceneManager.LoadScene( (index + 1) % (SceneManager.sceneCountInBuildSettings-1),LoadSceneMode.Additive);
         }
     }
     // Update is called once per frame
