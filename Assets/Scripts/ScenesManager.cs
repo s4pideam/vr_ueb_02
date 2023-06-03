@@ -14,7 +14,11 @@ public class ScenesManager : MonoBehaviour
     void OnGUI()
     {
         int index = SceneManager.GetSceneAt(1).buildIndex;
-        if (GUI.Button(new Rect(10, 10, 400, 30), String.Format("Next Scene ({0})",System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex((index + 1) % (SceneManager.sceneCountInBuildSettings-1))))))
+        String labelText = String.Format("Current Scene: {0}",
+            System.IO.Path.GetFileNameWithoutExtension(
+                SceneUtility.GetScenePathByBuildIndex((index) % (SceneManager.sceneCountInBuildSettings - 1))));
+        GUI.Label(new Rect(10, 10, 200, 20), labelText);
+        if (GUI.Button(new Rect(10, 30, 130, 30), "Next Scene"))
         {
             if (SceneManager.sceneCount > 2) return;
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
