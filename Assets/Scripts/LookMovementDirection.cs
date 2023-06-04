@@ -22,6 +22,7 @@ public class LookMovementDirection : MonoBehaviour
     {
         _oldPosition.y = transform.position.y;
         Vector3 direction = (transform.position - _oldPosition).normalized;
+        if (direction == Vector3.zero) return;
         transform.rotation = Quaternion.LookRotation(direction);
         _oldPosition = transform.position;
     }
