@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,10 +12,10 @@ public class RotateAroundBiggestTree : MonoBehaviour
     // Start is called before the first frame update
     public GameObject forest;
     private GameObject _target;
-    
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -38,15 +39,28 @@ public class RotateAroundBiggestTree : MonoBehaviour
 
             return;
         }
+        
         Vector3 moveTo = _target.transform.position;
         moveTo.y += _target.GetComponent<MeshRenderer>().bounds.max.y/2.0f;
-        if (Vector3.Distance(transform.position, moveTo) > 5)
+        Vector3 direction;
+        if (Vector3.Distance(transform.position, moveTo) >= 5)
         {
-            var delta =  velocity * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, moveTo, delta);
+            transform.position = Vector3.MoveTowards(transform.position, moveTo, velocity * Time.deltaTime);
         }else{
             transform.RotateAround(_target.transform.position, Vector3.up, degreesPerSecond * Time.deltaTime);
         }
 
+        direction = (moveTo- transform.position).normalized;          
+        if (direction == Vector3.zero) return;
+        Quaternion rotateTo = Quaternion.LookRotation(direction);
+        rotateTo  = Quaternion.Euler(30, rotateTo.eulerAngles.y, rotateTo.eulerAngles.z); 
+
+        transform.rotation = Quaternion.Lerp(transform.rotation,rotateTo,Time.deltaTime*5f);
+        
+        
+
+
     }
+
+
 }

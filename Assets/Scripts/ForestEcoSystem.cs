@@ -27,7 +27,7 @@ public class ForestEcoSystem : MonoBehaviour
         if (transform.childCount < MAX_TREES)
         {
             UnityEngine.Vector2 rand = Random.insideUnitCircle * 50;
-            Instantiate(oakTree_Prefab, new Vector3(rand.x, 0.0f, rand.y), Quaternion.identity, transform);
+            Instantiate(oakTree_Prefab, new Vector3(rand.x, 0.0f, rand.y), Quaternion.Euler(0,Random.Range(0f,360f),0), transform);
 
         }
         

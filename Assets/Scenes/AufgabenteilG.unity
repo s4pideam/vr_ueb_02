@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -444,6 +445,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40.71, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f39f1a823904246a3da96ba3937be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1463470098}
 --- !u!1001 &1463470086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,7 +467,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6788538757290762321, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788538757290762322, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
       propertyPath: m_RootOrder
@@ -525,3 +539,8 @@ MonoBehaviour:
   velocity: 5
   degreesPerSecond: 90
   forest: {fileID: 441627629}
+--- !u!4 &1463470098 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6788538757290762322, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
+  m_PrefabInstance: {fileID: 1463470086}
+  m_PrefabAsset: {fileID: 0}
