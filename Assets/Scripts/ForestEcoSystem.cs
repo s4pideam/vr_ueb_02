@@ -7,9 +7,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class ForestEcoSystem : MonoBehaviour
 {
-    public GameObject oakTree_Prefab;
 
-    private int MAX_TREES = 10;
+    public GameObject oakTree_Prefab;
+    [Range(1, 100)]public int maxTrees;
     void Start()
     {
         
@@ -24,16 +24,11 @@ public class ForestEcoSystem : MonoBehaviour
     }
     
     void FixedUpdate () {
-        if (transform.childCount < MAX_TREES)
+        if (transform.childCount < maxTrees)
         {
             UnityEngine.Vector2 rand = Random.insideUnitCircle * 50;
             Instantiate(oakTree_Prefab, new Vector3(rand.x, 0.0f, rand.y), Quaternion.Euler(0,Random.Range(0f,360f),0), transform);
 
-        }
-        
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            
         }
     }
 }
