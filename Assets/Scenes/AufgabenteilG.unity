@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oakTree_Prefab: {fileID: 191266, guid: 6bdb7dadd284fa04fa4802e2b0550013, type: 3}
-  maxTrees: 10
+  maxTrees: 15
 --- !u!4 &441627631
 Transform:
   m_ObjectHideFlags: 0

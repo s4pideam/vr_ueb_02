@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AufgabenteilG.unity
     guid: 81acb7935880fc448846330e37876a86
+  - enabled: 1
+    path: Assets/Scenes/BoidScene.unity
+    guid: 537eadb0bb804cc4588a5a85a8ac66aa
   m_configObjects: {}
