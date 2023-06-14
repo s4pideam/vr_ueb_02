@@ -35,7 +35,7 @@ public class BoidController : MonoBehaviour
     void Start()
     {
         // Set position before spawning Boids
-        transform.position = new Vector3(0, sphereRadius + 5, 0);
+        transform.position = new Vector3(100, sphereRadius + 15, 100);
         
         // Spawn Boids
         boidsInScene = new List<GameObject>();

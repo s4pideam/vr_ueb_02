@@ -25,6 +25,7 @@ public class CameraFollowBoid : MonoBehaviour
 
     void Start()
     {
+        if (target.transform.childCount == 0) return;
         Vector3 center = getCeneter();
         transform.position = center+ new Vector3(distance, distance, distance);
         transform.rotation = Quaternion.LookRotation((center - transform.position).normalized);
@@ -33,6 +34,7 @@ public class CameraFollowBoid : MonoBehaviour
 
     private void Update()
     {
+        if (target.transform.childCount == 0) return;
         Vector3 center = getCeneter();
         transform.position = Vector3.Lerp(transform.position,center+  new Vector3(distance, distance, distance),Time.deltaTime*2f);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((center - transform.position).normalized), Time.deltaTime*2f);
