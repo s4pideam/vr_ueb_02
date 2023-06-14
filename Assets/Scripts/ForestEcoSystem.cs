@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -27,7 +28,10 @@ public class ForestEcoSystem : MonoBehaviour
         if (transform.childCount < maxTrees)
         {
             UnityEngine.Vector2 rand = Random.insideUnitCircle * 50;
-            Instantiate(oakTree_Prefab, new Vector3(rand.x, 0.0f, rand.y), Quaternion.Euler(0,Random.Range(0f,360f),0), transform);
+            if (Physics.OverlapSphere(rand, 10f, LayerMask.NameToLayer("Tree")).Length == 0)
+            {
+                Instantiate(oakTree_Prefab, new Vector3(rand.x, 0.0f, rand.y), Quaternion.Euler(0,Random.Range(0f,360f),0), transform);
+            }
 
         }
     }
